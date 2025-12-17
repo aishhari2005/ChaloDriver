@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ChaloDriver - Book Your Ride</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f6f8;
+}
+
+/* NAVBAR */
+nav {
+    background: #111;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav h2 {
+    color: #ffca28;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+/* HERO */
+.hero {
+    background: linear-gradient(120deg, #000428, #004e92);
+    color: white;
+    padding: 70px 30px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 18px;
+}
+
+/* SECTIONS */
+.section {
+    padding: 50px 30px;
+}
+
+.section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* BOOKING FORM */
+.form-box {
+    max-width: 400px;
+    margin: auto;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+input, select, button {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+}
+
+button {
+    background: #ffca28;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#fare {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* CARDS */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+/* FOOTER */
+footer {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+    <h2>🚕 ChaloDriver</h2>
+    <ul>
+        <li><a href="#book">Book</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#about">About</a></li>
+    </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+    <h1>Book Safe & Affordable Rides</h1>
+    <p>Your trusted cab partner – Anytime, Anywhere</p>
+</div>
+
+<!-- BOOKING -->
+<div class="section" id="book">
+    <h2>🚖 Book a Cab</h2>
+    <div class="form-box">
+        <input type="text" id="pickup" placeholder="Pickup Location">
+        <input type="text" id="drop" placeholder="Drop Location">
+        <input type="number" id="distance" placeholder="Distance (km)">
+        
+        <select id="cab">
+            <option value="10">Mini - ₹10/km</option>
+            <option value="15">Sedan - ₹15/km</option>
+            <option value="20">SUV - ₹20/km</option>
+        </select>
+
+        <button onclick="calculateFare()">Calculate Fare</button>
+        <div id="fare"></div>
+    </div>
+</div>
+
+<!-- PRICING -->
+<div class="section" id="pricing">
+    <h2>💰 Pricing</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>Mini</h3>
+            <p>₹10 per km</p>
+            <p>Best for short rides</p>
+        </div>
+        <div class="card">
+            <h3>Sedan</h3>
+            <p>₹15 per km</p>
+            <p>Comfort rides</p>
+        </div>
+        <div class="card">
+            <h3>SUV</h3>
+            <p>₹20 per km</p>
+            <p>Family & group travel</p>
+        </div>
+    </div>
+</div>
+
+<!-- SERVICES -->
+<div class="section" id="services">
+    <h2>🛠 Our Services</h2>
+    <div class="cards">
+        <div class="card">24/7 Cab Availability</div>
+        <div class="card">Verified Drivers</div>
+        <div class="card">Live Fare Calculation</div>
+        <div class="card">Safe & Secure Rides</div>
+    </div>
+</div>
+
+<!-- REVIEWS -->
+<div class="section" id="reviews">
+    <h2>⭐ Customer Reviews</h2>
+    <div class="cards">
+        <div class="card">“Very affordable and safe!” – Aishwarya</div>
+        <div class="card">“Drivers are polite and on time.” – Rahul</div>
+        <div class="card">“Best cab service in my city.” – Sneha</div>
+    </div>
+</div>
+
+<!-- ABOUT -->
+<div class="section" id="about">
+    <h2>ℹ About ChaloDriver</h2>
+    <p style="text-align:center; max-width:700px; margin:auto;">
+        ChaloDriver is a user-friendly cab booking platform designed to provide
+        safe, reliable, and affordable transportation services. The platform
+        allows users to calculate fares instantly and choose cab types based on
+        their needs.
+    </p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    © 2025 ChaloDriver | Contact: support@chalodriver.com
+</footer>
+
+<script>
+function calculateFare() {
+    let distance = document.getElementById("distance").value;
+    let rate = document.getElementById("cab").value;
+
+    if (!distance || distance <= 0) {
+        document.getElementById("fare").innerText = "Please enter valid distance.";
+        return;
+    }
+
+    let total = distance * rate;
+    document.getElementById("fare").innerText =
+        "Estimated Fare: ₹" + total;
+}
+</script>
+
+</body>
+</html>
