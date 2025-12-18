@@ -2,334 +2,164 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>ChaloDriver – Smart Cab Booking</title>
-
-<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+<title>Register | ChaloDriver</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
-html{scroll-behavior:smooth}
-body{background:#f4f6f8;line-height:1.6}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
 
-
-nav{
-    position:sticky;
-    top:0;
-    z-index:1000;
-    background:#004e92;
-    color:white;
-    padding:15px 40px;
+body{
+    min-height:100vh;
     display:flex;
-    justify-content:space-between;
+    justify-content:center;
     align-items:center;
-}
-nav h2{color:#ffca28}
-
-nav ul{
-    list-style:none;
-    display:flex;
-    gap:20px;
-}
-
-nav ul li a{
-    color:white;
-    text-decoration:none;
-    font-size:15px;
-    padding:6px 10px;
-    border-radius:5px;
-}
-
-nav ul li a:hover{
-    background:#ffca28;
-    color:#004e92;
-}
-
-/* HERO */
-.hero{
     background:linear-gradient(120deg,#000428,#004e92);
-    color:white;
-    padding:70px 20px;
-    text-align:center;
-}
-.hero h1{font-size:38px}
-.hero p{font-size:18px;margin-top:10px}
-
-/* SECTIONS */
-.section{
-    padding:60px 20px;
-    max-width:1100px;
-    margin:auto;
-}
-.section h2{
-    text-align:center;
-    margin-bottom:30px;
-    color:#004e92;
 }
 
-/* BOX */
-.form-box{
-    max-width:450px;
-    margin:auto;
+
+.register-card{
+    width:380px;
     background:white;
-    padding:25px;
-    border-radius:10px;
-    box-shadow:0 10px 20px rgba(0,0,0,.15);
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 15px 30px rgba(0,0,0,.25);
 }
 
-input,select,textarea,button{
+
+.logo{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.logo h1{
+    color:#004e92;
+    font-size:28px;
+}
+
+.logo span{
+    color:#ffca28;
+}
+
+/* FORM */
+.register-card h2{
+    text-align:center;
+    margin-bottom:20px;
+    color:#333;
+}
+
+input{
     width:100%;
-    padding:10px;
-    margin:8px 0;
+    padding:12px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:6px;
+    font-size:14px;
+}
+
+input:focus{
+    outline:none;
+    border-color:#004e92;
 }
 
 button{
-    background:#ffca28;
-    border:none;
-    font-size:16px;
-    cursor:pointer;
-}
-
-/* MAP */
-#map{
-    height:400px;
-    margin-top:30px;
-    border-radius:10px;
-}
-
-/* FEATURES GRID */
-.features{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
-}
-.feature-card{
-    background:white;
-    padding:20px;
-    border-radius:10px;
-    text-align:center;
-    box-shadow:0 5px 10px rgba(0,0,0,.1);
-}
-
-/* REVIEWS */
-.review{
-    background:white;
-    padding:15px;
-    margin:10px auto;
-    max-width:520px;
-    border-radius:8px;
-    box-shadow:0 5px 10px rgba(0,0,0,.1);
-}
-.stars{color:gold;font-size:18px}
-.delete-btn{
-    float:right;
-    background:red;
-    color:white;
-    border:none;
-    padding:4px 8px;
-    cursor:pointer;
-}
-
-/* FOOTER */
-footer{
+    width:100%;
+    padding:12px;
     background:#004e92;
     color:white;
+    border:none;
+    border-radius:6px;
+    font-size:16px;
+    cursor:pointer;
+    margin-top:10px;
+}
+
+button:hover{
+    background:#003366;
+}
+
+
+.footer-text{
     text-align:center;
-    padding:25px;
-    margin-top:40px;
+    margin-top:15px;
+    font-size:14px;
+}
+
+.footer-text a{
+    color:#004e92;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+#error{
+    color:red;
+    text-align:center;
+    margin-top:10px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAV -->
-<nav>
-    <h2>🚕 ChaloDriver</h2>
-    <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#book">Book</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#reviewsSection">Reviews</a></li>
-        <li><a href="#feedback">Feedback</a></li>
-    </ul>
-</nav>
+<div class="register-card">
 
-<!-- HERO -->
-<div class="hero" id="home">
-    <h1>Smart, Safe, Reliable Cab Booking</h1>
-    <p>Connecting riders with trusted drivers anytime, anywhere</p>
-</div>
-
-<!-- ABOUT -->
-<div class="section" id="about">
-<h2>ℹ About</h2>
-<p style="text-align:center;max-width:800px;margin:auto;">
-<b>ChaloDriver</b> is a modern cab booking platform designed to make urban
-transportation safer, smarter, and more affordable.
-</p>
-
-<div class="features" style="margin-top:40px;">
-    <div class="feature-card">
-        <h3>🎯 Mission</h3>
-        <p>Safe and affordable rides for everyone.</p>
+    
+    <div class="logo">
+        <h1>🚕 Chalo<span>Driver</span></h1>
+        <p>Create your account</p>
     </div>
-    <div class="feature-card">
-        <h3>🚀 Vision</h3>
-        <p>Trusted digital mobility platform.</p>
-    </div>
-    <div class="feature-card">
-        <h3>🤝 Values</h3>
-        <p>Safety, transparency & innovation.</p>
-    </div>
+
+   
+    <h2>Register</h2>
+
+    <input type="text" id="name" placeholder="Full Name">
+    <input type="email" id="email" placeholder="Email Address">
+    <input type="password" id="password" placeholder="Password">
+
+    <button onclick="register()">Create Account</button>
+
+    <p class="footer-text">
+        Already have an account?
+        <a href="login.html">Login</a>
+    </p>
+
+    <p id="error"></p>
 </div>
-</div>
-
-<!-- BOOKING -->
-<div class="section" id="book">
-<h2>🚖 Book a Cab</h2>
-<div class="form-box">
-    <input id="pickup" placeholder="Pickup Location">
-    <input id="drop" placeholder="Drop Location">
-
-    <select id="cab">
-        <option value="Mini">Mini</option>
-        <option value="Sedan">Sedan</option>
-        <option value="SUV">SUV</option>
-    </select>
-
-    <button onclick="calculateFare()">Calculate Fare</button>
-    <div id="fare"></div>
-    <div id="carDetails"></div>
-
-    <button onclick="completeRide()">Complete Ride</button>
-</div>
-
-<div id="map"></div>
-</div>
-
-<!-- FEATURES -->
-<div class="section" id="features">
-<h2>✨ Why Choose ChaloDriver</h2>
-<div class="features">
-    <div class="feature-card">🗺 Real-time Route</div>
-    <div class="feature-card">💰 Transparent Pricing</div>
-    <div class="feature-card">🚗 Verified Drivers</div>
-    <div class="feature-card">⭐ Trusted Reviews</div>
-    <div class="feature-card">📱 Fast Booking</div>
-    <div class="feature-card">🔐 Secure Platform</div>
-</div>
-</div>
-
-<!-- FEEDBACK -->
-<div class="section" id="feedback">
-<h2>⭐ Rate Your Ride</h2>
-<div class="form-box">
-    <select id="rating">
-        <option value="5">Excellent</option>
-        <option value="4">Good</option>
-        <option value="3">Average</option>
-        <option value="2">Poor</option>
-        <option value="1">Bad</option>
-    </select>
-    <textarea id="feedbackText" placeholder="Write your feedback"></textarea>
-    <button onclick="submitFeedback()">Submit Feedback</button>
-</div>
-</div>
-
-<!-- REVIEWS -->
-<div class="section" id="reviewsSection">
-<h2>🗂 Customer Reviews</h2>
-<p style="text-align:center;">Average Rating: <span id="avgRating">0</span> ⭐</p>
-
-<div style="margin-bottom:15px;text-align:center;">
-    <button onclick="filterReviews('all')">All</button>
-    <button onclick="filterReviews(5)">Excellent</button>
-    <button onclick="filterReviews(4)">Good</button>
-</div>
-
-<div id="reviews"></div>
-</div>
-
-<footer>
-© 2025 ChaloDriver | ChaloDriver.com
-</footer>
-
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
 <script>
-let map=L.map("map").setView([20.59,78.96],5);
-let routeLayer;
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
+function register(){
+    const nameVal = document.getElementById("name").value.trim();
+    const emailVal = document.getElementById("email").value.trim();
+    const passVal = document.getElementById("password").value.trim();
+    const error = document.getElementById("error");
 
-const cars={
- Mini:{rate:10,car:"WagonR",number:"TS09 AB 1234",driver:"Ramesh"},
- Sedan:{rate:15,car:"Swift Dzire",number:"TS10 CD 5678",driver:"Suresh"},
- SUV:{rate:20,car:"Innova",number:"TS11 EF 9012",driver:"Mahesh"}
-};
+    if(!nameVal || !emailVal || !passVal){
+        error.innerText = "All fields are required";
+        return;
+    }
 
-async function geocode(p){
- let r=await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${p}`);
- let d=await r.json(); return[d[0].lat,d[0].lon];
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    if(users.find(u => u.email === emailVal)){
+        error.innerText = "User already exists";
+        return;
+    }
+
+    users.push({
+        name: nameVal,
+        email: emailVal,
+        password: passVal
+    });
+
+    localStorage.setItem("users", JSON.stringify(users));
+
+    alert("Account created successfully! Please login.");
+
+   
+    window.location.href = "login.html";
 }
-
-async function calculateFare(){
- let p=pickup.value,d=drop.value,c=cab.value;
- if(!p||!d) return;
- let[plat,plon]=await geocode(p);
- let[dlat,dlon]=await geocode(d);
- let r=await fetch(`https://router.project-osrm.org/route/v1/driving/${plon},${plat};${dlon},${dlat}?geometries=geojson`);
- let data=await r.json();
- let distanceKm=data.routes[0].distance/1000;
- let fareAmt=Math.round(distanceKm*cars[c].rate);
- fare.innerText=`Distance: ${distanceKm.toFixed(2)} km | Fare: ₹${fareAmt}`;
- carDetails.innerHTML=`🚗 ${cars[c].car}<br>👨 Driver: ${cars[c].driver}<br>🔢 ${cars[c].number}`;
- if(routeLayer) map.removeLayer(routeLayer);
- routeLayer=L.geoJSON(data.routes[0].geometry).addTo(map);
- map.fitBounds(routeLayer.getBounds());
-}
-
-function completeRide(){alert("Ride completed. Please rate your ride!");}
-
-/* REVIEWS */
-const defaultReviews=[
- {rating:5,text:"Excellent service!",date:new Date()},
- {rating:4,text:"Good experience and smooth ride.",date:new Date()}
-];
-
-function initReviews(){
- if(!localStorage.getItem("reviews"))
- localStorage.setItem("reviews",JSON.stringify(defaultReviews));
-}
-
-function loadReviews(f="all"){
- let r=JSON.parse(localStorage.getItem("reviews"))||[];
- reviews.innerHTML="";
- let avg=r.reduce((s,x)=>s+x.rating,0)/(r.length||1);
- avgRating.innerText=avg.toFixed(1);
- r.filter(x=>f==="all"||x.rating===f).forEach(x=>{
-  reviews.innerHTML+=`
-  <div class="review">
-   <div class="stars">${"★".repeat(x.rating)}</div>
-   <p>${x.text}</p>
-   <small>${new Date(x.date).toLocaleString()}</small>
-  </div>`;
- });
-}
-
-function submitFeedback(){
- let txt=feedbackText.value;
- if(!txt) return alert("Enter feedback");
- let r=JSON.parse(localStorage.getItem("reviews"));
- r.push({rating:+rating.value,text:txt,date:new Date()});
- localStorage.setItem("reviews",JSON.stringify(r));
- feedbackText.value="";
- loadReviews();
-}
-
-function filterReviews(t){loadReviews(t)}
-
-initReviews(); loadReviews();
 </script>
 
 </body>
