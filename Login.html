@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login | ChaloDriver</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(120deg,#000428,#004e92);
+}
+
+.login-card{
+    width:380px;
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 15px 30px rgba(0,0,0,.25);
+}
+
+.logo{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.logo h1{
+    color:#004e92;
+    font-size:28px;
+}
+
+.logo span{
+    color:#ffca28;
+}
+
+.login-card h2{
+    text-align:center;
+    margin-bottom:20px;
+    color:#333;
+}
+
+
+input{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:6px;
+    font-size:14px;
+}
+
+input:focus{
+    outline:none;
+    border-color:#004e92;
+}
+
+
+button{
+    width:100%;
+    padding:12px;
+    background:#004e92;
+    color:white;
+    border:none;
+    border-radius:6px;
+    font-size:16px;
+    cursor:pointer;
+    margin-top:10px;
+}
+
+button:hover{
+    background:#003366;
+}
+
+
+.footer-text{
+    text-align:center;
+    margin-top:15px;
+    font-size:14px;
+}
+
+.footer-text a{
+    color:#004e92;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+
+#error{
+    color:red;
+    text-align:center;
+    margin-top:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="login-card">
+
+    
+    <div class="logo">
+        <h1>🚕 Chalo<span>Driver</span></h1>
+        <p>Welcome back</p>
+    </div>
+
+    
+    <h2>Login</h2>
+
+    <input type="email" id="email" placeholder="Email Address">
+    <input type="password" id="password" placeholder="Password">
+
+    <button onclick="login()">Login</button>
+
+    <p class="footer-text">
+        New to ChaloDriver?
+        <a href="register.html">Create an account</a>
+    </p>
+
+    <p id="error"></p>
+</div>
+
+<script>
+function login(){
+    const emailVal = document.getElementById("email").value.trim();
+    const passVal = document.getElementById("password").value.trim();
+    const error = document.getElementById("error");
+
+    if(!emailVal || !passVal){
+        error.innerText = "Please enter email and password";
+        return;
+    }
+
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    let user = users.find(
+        u => u.email === emailVal && u.password === passVal
+    );
+
+    if(user){
+        
+        sessionStorage.setItem("loggedInUser", emailVal);
+
+        // redirect to main app
+        window.location.href = "index.html";
+    }else{
+        error.innerText = "Invalid email or password";
+    }
+}
+</script>
+
+</body>
+</html>
